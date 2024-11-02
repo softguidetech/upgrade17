@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    
+
+    <template id="external_layout_standard_extended" inherit_id="web.external_layout_standard">
+
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout {{  'o_report_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}" position="replace">
+            <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout {{  'o_report_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <!-- <t t-call="web.address_layout"/> -->
+
+            
+            <t t-raw="0"/>
+        </div>
+        </div>
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout" position="replace"/>
+        <div t-attf-class="header o_company_#{company.id}_layout" position="replace">
+            <div t-attf-class="header o_company_#{company.id}_layout">
+            <div class="row">
+                <div class="col-4 text-left">
+                    <span style="font-weight: bold;"><t t-esc="company.name_in_report_en"/></span><br/>
+                    <!-- <span style="font-weight: bold;">
+                        <t t-esc="company.street"/>
+                    </span>
+                    <br/> -->
+                    <span style="font-weight: bold;">
+                        <t t-esc="company.street2"/>
+                    </span>
+                    <br/>
+                    <span style="font-weight: bold;">Tel:
+                        <t t-esc="company.phone"/>
+                    </span>
+                    <br/>
+                    <span style="font-weight: bold;">FAX: <t t-esc="company.fax"/></span>
+                    <br/>
+                    <span style="font-weight: bold;">P.O. BOX:
+                        <t t-esc="company.zip"/>
+                    </span>
+                    <br/>
+                    <span style="font-weight: bold;">TRN:
+                        <t t-esc="company.vat"/>
+                    </span>
+                    <br/>
+                    <!-- <span style="font-weight: bold;">
+                        <span t-field="company.state_id"/><br/>
+                        <span t-field="company.country_id"/>
+
+                    </span>
+                    <br/> -->
+                </div>
+
+                <div class="col-4 text-center">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" width="200px"
+                         height="150px"/>
+                </div>
+                <div class="col-4 text-right">
+                    <span style="font-weight: bold;"><t t-esc="company.name_in_report_ar"/></span><br/>
+                    <span style="font-weight: bold;">
+                        <t t-esc="company.street"/>
+                    </span>
+                    <br/>
+                    <!-- <span style="font-weight: bold;">
+                        <t t-esc="company.street2"/>
+                    </span>
+                    <br/> -->
+
+                    <span style="font-weight: bold;">هاتف:
+                        <t t-esc="company.phone"/>
+                    </span>
+                    <br/>
+                    <span style="font-weight: bold;">فاكس: <t t-esc="company.fax"/></span>
+                    <br/>
+                    <span style="font-weight: bold;">ص.ب:
+                        <t t-esc="company.zip"/>
+                    </span>
+                    <br/>
+                    <span style="font-weight: bold;">TRN:
+                        <t t-esc="company.vat"/>
+                    </span>
+                    <br/>
+                    <!-- <span style="font-weight: bold;">
+                        <span t-field="company.state_id"/><br/>
+                        <span t-field="company.country_id"/>
+                        
+
+                    </span>
+                    <br/> -->
+                    <span t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                        <span t-if="report_type == 'pdf'" style="font-weight: bold;">
+                            Page:
+                            <span class="page" style="font-weight: bold;"/>
+                            of
+                            <span class="topage" style="font-weight: bold;"/>
+                        </span>
+                    </span>
+
+            </div>
+            
+        </div>
+        <t t-set="model" t-value="o._table"/>
+        <t t-if="model=='account_move'">
+                <div class="col-12">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <!-- <p style="font-weight: bold;">Tax No:
+                                           <span t-field="o.company_id.vat"></span>
+                                        </p> -->
+                                        <br/>
+                                        <br/>
+
+
+                                        <p style="font-weight: bold;">Customer Name:
+                                          <span t-field="o.partner_id"></span>,
+                                           <span t-field="o.partner_id.street"></span>,
+                                          <span t-field="o.partner_id.city"></span>,
+                                            <span t-field="o.partner_id.state_id"></span>,
+                                          <span t-field="o.partner_id.zip"></span>,
+                                          <span t-field="o.partner_id.country_id"></span>
+                                            <span t-field="o.partner_id.name"></span>
+                                        </p>
+
+                                        <p style="font-weight: bold;">Tell:
+                                            <span t-field="o.partner_id.phone"></span>
+                                        </p>
+
+                                        <p style="font-weight: bold;">Address:
+                                            <span t-field="o.partner_id.street"></span>,
+                                            <span t-field="o.partner_id.city"></span>,
+                                            <span t-field="o.partner_id.state_id"></span>,
+                                            <span t-field="o.partner_id.country_id"></span>
+                                        </p>
+
+                                         <p style="font-weight: bold;">Cust VatNo:
+                                            <span t-field="o.partner_id.vat"></span>
+                                        </p>
+
+                                    </div>
+                                    <div class="col-4">
+                                        <p  t-if="o.move_type == 'out_invoice'" style="font-weight: bold;">Tax Invoice:
+                                            <span t-field="o.name"></span>
+                                        </p>
+                                        <p  t-if="o.move_type == 'out_refund'" style="font-weight: bold;">Tax Credit Note:
+                                            <span t-field="o.name"></span>
+                                        </p>
+                                    </div>
+
+                                    <div class="col-4">
+                                    
+<br/>
+<br/>
+                                        <p  style="font-weight: bold;">Currency:
+                                            <span t-field="o.company_id.currency_id"></span>
+                                        </p>
+
+                                        <p style="font-weight: bold;">SO Date:
+                                            <span t-field="o.invoice_date"></span>
+                                        </p>
+
+                                        <p style="font-weight: bold;">Ref:
+                                            <span t-field="o.ref"></span>
+                                       </p>
+                                    </div>
+                               </div>
+                            </div>
+            </t>
+        <t t-if="model=='sale_order'">
+                <div class="col-12">
+                                <div class="row">
+                                    <div class="col-4">
+                                       
+                                        <p style="font-weight: bold;">Customer Name:
+                                          <span t-field="o.partner_id"></span>,
+                                           <span t-field="o.partner_id.street"></span>,
+                                          <span t-field="o.partner_id.city"></span>,
+                                            <span t-field="o.partner_id.state_id"></span>,
+                                          <span t-field="o.partner_id.zip"></span>,
+                                          <span t-field="o.partner_id.country_id"></span>
+                                            <span t-field="o.partner_id.name"></span>
+                                        </p>
+
+                                        <p style="font-weight: bold;">Tell:
+                                            <span t-field="o.partner_id.phone"></span>
+                                        </p>
+
+                                        <p style="font-weight: bold;">Address:
+                                            <span t-field="o.partner_id.street"></span>,
+                                            <span t-field="o.partner_id.city"></span>,
+                                            <span t-field="o.partner_id.state_id"></span>,
+                                            <span t-field="o.partner_id.country_id"></span>
+                                        </p>
+
+                                         <p style="font-weight: bold;">Cust VatNo:
+                                            <span t-field="o.partner_id.vat"></span>,
+                                        </p>
+
+                                    </div>
+                                    
+                               </div>
+                            </div>
+            </t>
+        </div>
+        
+        </div>
+        
+    </template>
+
+
+   
+</odoo>

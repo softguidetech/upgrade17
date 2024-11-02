@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_invoice_document_with_payments" inherit_id="account.report_invoice_document" primary="True">
+            
+        </template>
+    <template id="report_invoice_document_extended" inherit_id="account.report_invoice_document">
+       <div class="page mb-4" position="replace">
+            <div class="page mb-4" style="font-size: 13px !important;">
+                        <style>
+                            table {
+                            font-family: arial, sans-serif;
+                            border-collapse: collapse;
+                            width: 100%;
+                            }
+
+                            td, th {
+                            border: 1px solid #dddddd;
+                            text-align: left;
+                            padding: 8px;
+                            }
+                            
+                        </style>
+                        
+                        <div style="font-family:FontAljazeeraColor;">
+                            <br/>
+
+                            <table>
+                            <thead>
+                                <tr>
+                                    <th>S #</th>
+                                    <th>Item No</th>
+                                    <th>Barcode</th>
+                                    <th>Description</th>
+                                    <th>Unit</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Amount</th>
+                                    <th>Vat 5%</th>
+                                    <th>Total After Vat</th>
+                                </tr>
+                                </thead>
+                                <t t-set="count" t-value="1"/>
+                                <t t-foreach="o.invoice_line_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="count"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.default_code"></span>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.barcode"></span>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.name"></span>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_uom_id"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line.quantity"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line.price_unit"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line.price_subtotal"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="round(line.calc_vat(),2)"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="round(line.calc_total_after_vat(),2)"></span>
+                                        </td>
+                                    </tr>
+                                    <t t-set="count" t-value="count+1"></t>
+                                </t>
+                                <t t-set="x" t-value="0"/>
+                                <t t-set="total_before_vat"
+                                   t-value="sum([x for x in o.invoice_line_ids.mapped('price_subtotal')])"/>
+                                <t t-set="vat" t-value="sum([x.calc_vat() for x in o.invoice_line_ids])"/>
+                                <t t-set="total_discount" t-value="sum([x.calc_discount() for x in o.invoice_line_ids])"/>
+                                <t t-set="net_amount" t-value="total_before_vat + vat"/>
+
+                                <tr>
+                                    <th colspan="9" style="text-align:right;">Total Before Vat</th>
+                                    <td>
+                                        <span t-esc="round(total_before_vat,2)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="9" style="text-align:right;">Discount</th>
+                                    <td>
+                                        <span t-esc="round(total_discount,2)"></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th colspan="9" style="text-align:right;">Vat 5%</th>
+                                    <td>
+                                        <span t-esc="round(vat,2)"/>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th colspan="9" style="text-align:right;">
+                                        <span>
+                                            <t t-esc="'(Only' + (o.currency_id.amount_to_text(round(net_amount,2))) + ')'"/>
+                                            Net Amount
+                                        </span>
+                                    </th>
+
+                                    <td>
+                                        <span t-esc="round(net_amount,2)"/>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+                            <br/>
+                            <div class="col-4 text-center">
+                                <span style="font-weight:bold;">Signature</span>
+                            </div>
+                        </div>
+                    </div>
+       </div>
+    </template>
+</odoo>

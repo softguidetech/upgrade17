@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="paperformat_portrait_report" model="report.paperformat">
+        <field name="name">Invoice A4 Report</field>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">100</field>
+        <field name="margin_bottom">40</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_spacing">90</field>
+        <field name="dpi">110</field>
+    </record>
+
+    <template id="my_external_layout_standard">
+        <div t-attf-class="header o_company_#{company.id}_layout">
+            <div class="row">
+                <div class="col-4 text-left">
+                    <span style="font-weight: bold;">TAJ AL SULTAN TRADING-F.Z.E</span>
+                    <br />
+                    <span style="font-weight: bold;">Tel: <t t-esc="company.phone" />
+                    </span>
+                    <br />
+                    <span style="font-weight: bold;">FAX: 042283836</span>
+                    <br />
+                    <spaFn style="font-weight: bold;">P.O. BOX: <t t-esc="company.zip" />
+                    </spaFn>
+                    <br />
+                    <span style="font-weight: bold;">
+                        <span t-field="company.state_id" />
+                        <br />
+                        <span t-field="company.country_id" />
+
+                    </span>
+                    <br />
+                </div>
+
+                <div class="col-4 text-center">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"
+                        width="200px"
+                        height="150px" />
+                </div>
+                <div class="col-4 text-right">
+                    <span style="font-weight: bold;">تاج السلطان لتعبئة الزيوت شركة الشخص الواحد
+                        ش.ذ.م.م </span>
+                    <br />
+                    <span style="font-weight: bold;">هاتف: <t t-esc="company.phone" />
+                    </span>
+                    <br />
+                    <span style="font-weight: bold;">فاكس: 042283836</span>
+                    <br />
+                    <span style="font-weight: bold;">ص.ب: <t t-esc="company.zip" />
+                    </span>
+                    <br />
+                    <span style="font-weight: bold;">
+                        <span t-field="company.state_id" />
+                        <br />
+                        <span t-field="company.country_id" />
+
+                    </span>
+                    <br />
+                    <span t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                        <span t-if="report_type == 'pdf'" style="font-weight: bold;"> Page: <span
+                                class="page" style="font-weight: bold;" /> of <span class="topage"
+                                style="font-weight: bold;" />
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-4">
+                        <p style="font-weight: bold;">Tax No: <span t-field="o.company_id.vat"></span>
+                        </p>
+                        <p style="font-weight: bold;">Customer Name: <span t-field="o.partner_id"></span>
+                            ,
+                                           <span
+                                t-field="o.partner_id.street"></span>, <span
+                                t-field="o.partner_id.city"></span>, <span
+                                t-field="o.partner_id.state_id"></span>, <span
+                                t-field="o.partner_id.zip"></span>, <span
+                                t-field="o.partner_id.country_id"></span>
+                                            <span
+                                t-field="o.partner_id.name"></span>
+                        </p>
+
+                        <p style="font-weight: bold;">Tell: <span t-field="o.partner_id.phone"></span>
+                        </p>
+
+                        <p style="font-weight: bold;">Address: <span t-field="o.partner_id.street"></span>
+                            ,
+                                            <span
+                                t-field="o.partner_id.city"></span>, <span
+                                t-field="o.partner_id.state_id"></span>, <span
+                                t-field="o.partner_id.country_id"></span>
+                        </p>
+
+                        <p style="font-weight: bold;">Cust VatNo: <span t-field="o.partner_id.vat"></span>
+                            ,
+                                        </p>
+                    </div>
+                    <div class="col-4">
+                        <p style="font-weight: bold;">Tax Invoice: <span t-field="o.name"></span>
+                        </p>
+                    </div>
+
+                    <div class="col-4">
+                        <p style="font-weight: bold;">Currency: <span
+                                t-field="o.company_id.currency_id"></span>
+                        </p>
+
+                        <p style="font-weight: bold;">SO Date: <span t-field="o.invoice_date"></span>
+                        </p>
+
+                        <p style="font-weight: bold;">Ref: <span t-field="o.ref"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout"
+            t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+            t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-call="web.address_layout" />
+            <t t-raw="0" />
+        </div>
+    </template>
+
+    <template id="invoice_customization_app.my_external_layout">
+        <t t-if="not o" t-set="o" t-value="doc" />
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id" />
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()" />
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company" />
+            </t>
+        </t>
+        <t t-call="invoice_customization_app.my_external_layout_standard">
+            <t t-raw="0" />
+        </t>
+    </template>
+
+    <template id="invoice_report_custom_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="invoice_customization_app.my_external_layout">
+                    <div class="page" style="font-size: 13px !important;">
+                        <style>
+                            table {
+                            font-family: arial, sans-serif;
+                            border-collapse: collapse;
+                            width: 100%;
+                            }
+
+                            td, th {
+                            border: 1px solid #dddddd;
+                            text-align: left;
+                            padding: 8px;
+                            }
+
+                        </style>
+                        <div style="font-family:FontAljazeeraColor;">
+                            <br />
+
+                            <table>
+                                <tr>
+                                    <th>S #</th>
+                                    <th>Item No</th>
+                                    <th>Barcode</th>
+                                    <th>Description</th>
+                                    <th>Unit</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Amount</th>
+                                    <th>Vat 5%</th>
+                                    <th>Total After Vat</th>
+                                </tr>
+                                <t t-set="count" t-value="1" />
+                                <t t-foreach="o.invoice_line_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="count" />
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.default_code"></span>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.barcode"></span>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.name"></span>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_uom_id"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line.quantity"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line.price_unit"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="line.price_subtotal"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="round(line.calc_vat(),2)"></span>
+                                        </td>
+                                        <td>
+                                            <span t-esc="round(line.calc_total_after_vat(),2)"></span>
+                                        </td>
+                                    </tr>
+                                    <t t-set="count" t-value="count+1"></t>
+                                </t>
+                                <t t-set="x" t-value="0" />
+                                <t t-set="total_before_vat"
+                                    t-value="sum([x for x in o.invoice_line_ids.mapped('price_subtotal')])" />
+                                <t t-set="vat"
+                                    t-value="sum([x.calc_vat() for x in o.invoice_line_ids])" />
+                                <t t-set="total_discount"
+                                    t-value="sum([x.calc_discount() for x in o.invoice_line_ids])" />
+                                <t t-set="net_amount" t-value="total_before_vat + vat" />
+
+                                <tr>
+                                    <th colspan="9" style="text-align:right;">Total Before Vat</th>
+                                    <td>
+                                        <span t-esc="round(total_before_vat,2)" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="9" style="text-align:right;">Discount</th>
+                                    <td>
+                                        <span t-esc="round(total_discount,2)"></span>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th colspan="9" style="text-align:right;">Vat 5%</th>
+                                    <td>
+                                        <span t-esc="round(vat,2)" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th colspan="9" style="text-align:right;">
+                                        <span>
+                                            <t
+                                                t-esc="'(Only' + (o.currency_id.amount_to_text(round(net_amount,2))) + ')'" />
+                                            Net Amount </span>
+                                    </th>
+
+                                    <td>
+                                        <span t-esc="round(net_amount,2)" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                            <div class="col-4 text-center">
+                                <span style="font-weight:bold;">Signature</span>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <!-- <report id="action_print_invoice_customization_report"
+        string="Invoice Customization"
+        model="account.move"
+        name="invoice_customization_app.invoice_report_custom_template"
+        file="invoice_customization_app.invoice_report_custom_template"
+        paperformat="invoice_customization_app.paperformat_portrait_report"
+        report_type="qweb-pdf" /> -->
+
+        <record id="action_print_invoice_customization_report_id" model="ir.actions.report">
+            <field name="name">Account Move</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">invoice_customization_app.invoice_report_custom_template</field>
+            <field name="report_file">invoice_customization_app.invoice_report_custom_template</field>
+            <field name="paperformat_id" ref="invoice_customization_app.paperformat_portrait_report"/>
+        </record>
+        
+        <record id="account_move_custom_print_inherited_id" model="ir.ui.view">
+            <field name="name">account.move.form.custom.print.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='button_cancel']" position="after">
+                    <button name="%(invoice_customization_app.action_print_invoice_customization_report_id)d" 
+                            type="action" 
+                            string="Custom Print"/>
+                </xpath>
+            </field>
+        </record>
+        
+        
+</odoo>

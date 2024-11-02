@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_invoice_document_custom" inherit_id="account.report_invoice_document">
+
+        <xpath expr="//table[@name='invoice_line_table']/thead/tr/th[1]" position="before">
+            <th>
+                <span>Item No</span>
+            </th>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']/tbody/t[4]/tr/t/td[1]" position="before">
+            <td>
+                <span t-esc="line.sequence"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//table[@name='invoice_line_table']/thead/tr/th[2]" position="before">
+            <th>
+                <span>Barcode</span>
+            </th>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']/tbody/t[4]/tr/t/td[2]" position="before">
+            <td>
+                <span t-field="line.product_id.barcode"/>
+            </td>
+        </xpath>
+
+        <xpath expr="//table[@name='invoice_line_table']/thead/tr/th[6]" position="after">
+            <th>
+                <span>Amount (with Taxes)</span>
+            </th>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']/tbody/t[4]/tr/t/td[6]" position="after">
+            <td>
+                <span t-field="line.price_total"/>
+            </td>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']/tbody/t[4]/t[3]/tr/td" position="attributes">
+            <attribute name="colspan">100</attribute>
+        </xpath>
+
+        <xpath expr="//table[@name='invoice_line_table']/thead/tr/th[7]" position="after">
+            <th>
+                <span>Tax Amount</span>
+            </th>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']/tbody/t[4]/tr/t/td[7]" position="after">
+            <td>
+                <span t-field="line.price_subtotal"/>
+            </td>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']/tbody/t[4]/t[3]/tr/td" position="attributes">
+            <attribute name="colspan">101</attribute>
+        </xpath>
+
+        <xpath expr="//table[@name='invoice_line_table']/thead/tr/th[8]" position="after">
+            <th>
+                <span>Amount (with Taxes)</span>
+            </th>
+        </xpath>
+        <xpath expr="//table[@name='invoice_line_table']/tbody/t[4]/tr/t/td[8]" position="after">
+            <td>
+                <span t-field="line.price_total"/>
+            </td>
+        </xpath>
+        <xpath expr="//td[strong[contains(text(), 'Subtotal')]]" position="attributes">
+            <attribute name="colspan">102</attribute>
+        </xpath>
+    </template>
+</odoo>
