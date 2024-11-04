@@ -97,14 +97,14 @@
 
                         </span>
                         <br/> -->
-                        <span t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                        <!-- <span t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
                             <span t-if="report_type == 'pdf'" style="font-weight: bold;">
                                 Page:
                                 <span class="page" style="font-weight: bold;"/>
                                 of
                                 <span class="topage" style="font-weight: bold;"/>
                             </span>
-                        </span>
+                        </span> -->
 
                     </div>
 
