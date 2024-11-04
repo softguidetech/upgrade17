@@ -2,6 +2,7 @@
 {
     'name': "Custom Report Template",
     'summary': "Custom Report Templatee",
+    'license': 'LGPL-3',
     'description': """Custom Report Template""",
     'author': "MAyat Samir",
     'category': 'Invoicing',
