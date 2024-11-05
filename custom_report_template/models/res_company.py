@@ -8,14 +8,14 @@ class ResCompany(models.Model):
     name_in_report_ar = fields.Char(string='Name in Report Arabic',)
     name_in_report_en = fields.Char(string='Name in Report English',)
 
-class BaseDocumentLayout(models.TransientModel):
-    _inherit = 'base.document.layout'
-
-    fax = fields.Char(related='company_id.fax', readonly=True)
-    name_in_report_ar = fields.Many2one(related="company_id.name_in_report_ar", readonly=True)
-    name_in_report_en = fields.Many2one(related="company_id.name_in_report_en", readonly=True)
-    street = fields.Many2one(related="company_id.street", readonly=True)
-    zip = fields.Many2one(related="company_id.zip", readonly=True)
+# class BaseDocumentLayout(models.TransientModel):
+#     _inherit = 'base.document.layout'
+#
+#     fax = fields.Char(related='company_id.fax', readonly=True)
+#     name_in_report_ar = fields.Many2one(related="company_id.name_in_report_ar", readonly=True)
+#     name_in_report_en = fields.Many2one(related="company_id.name_in_report_en", readonly=True)
+#     street = fields.Many2one(related="company_id.street", readonly=True)
+#     zip = fields.Many2one(related="company_id.zip", readonly=True)
 
 
 
