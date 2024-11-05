@@ -29,7 +29,7 @@
                         </span>
                         <br/> -->
                         <span style="font-weight: bold;">
-                            <t t-esc="company.street2"/>
+                            <t t-esc="company.street"/>
                         </span>
                         <br/>
                         <span style="font-weight: bold;">Tel:
@@ -112,7 +112,7 @@
                 <br/>
                 <br/>
                 <br/>
-                <t t-set="model" t-value="o._table"/>
+<!--                <t t-set="model" t-value="o._table"/>-->
                 <t t-if="model=='account_move'">
                     <div class="col-12">
                         <div class="row">
