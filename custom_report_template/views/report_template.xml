@@ -112,7 +112,7 @@
                 <br/>
                 <br/>
                 <br/>
-                <t t-set="model" t-value="o._table"/>
+<!--                <t t-set="model" t-value="o._table"/>-->
                 <t t-if="model=='account_move'">
                     <div class="col-12">
                         <div class="row">
