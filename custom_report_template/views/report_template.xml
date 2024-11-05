@@ -29,7 +29,7 @@
                         </span>
                         <br/> -->
                         <span style="font-weight: bold;">
-                            <t t-esc="company.street2"/>
+                            <t t-esc="company.street"/>
                         </span>
                         <br/>
                         <span style="font-weight: bold;">Tel:
