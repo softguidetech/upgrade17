@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <template id="report_invoice_document_with_payments" inherit_id="account.report_invoice_document" primary="True">
-            
+
         </template>
     <template id="report_invoice_document_extended" inherit_id="account.report_invoice_document">
        <div class="page mb-4" position="replace">
@@ -18,9 +18,9 @@
                             text-align: left;
                             padding: 8px;
                             }
-                            
+
                         </style>
-                        
+
                         <div style="font-family:FontAljazeeraColor;">
                             <br/>
                             <br/>
@@ -123,19 +123,14 @@
 
                             </table>
                             <br/>
+                            <br/>
+                            <br/>
+                            <br/>
                             <div class="col-4 text-center">
                                 <span style="font-weight:bold;">Signature</span>
                             </div>
                         </div>
                     </div>
-                         <span t-attf-class="footer o_standard_footer ">
-                            <span t-if="report_type == 'pdf'" style="font-weight: bold;">
-                                Page:
-                                <span class="page" style="font-weight: bold;"/>
-                                of
-                                <span class="topage" style="font-weight: bold;"/>
-                            </span>
-                        </span>
        </div>
     </template>
 </odoo>

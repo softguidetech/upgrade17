@@ -15,7 +15,18 @@
                 <t t-raw="0"/>
             </div>
         </div>
-        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout" position="replace"/>
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout" position="replace">
+            <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page:
+                        <span class="page"/>
+                        /
+                        <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div t-attf-class="header o_company_#{company.id}_layout" position="replace">
             <div t-attf-class="header o_company_#{company.id}_layout">
                 <div class="row">
@@ -112,7 +123,7 @@
                 <br/>
                 <br/>
                 <br/>
-                <t t-set="model" t-value="o._table"/>
+                <t t-set="model" t-value="o and o._table"/>
                 <t t-if="model=='account_move'">
                     <div class="col-12">
                         <div class="row">
