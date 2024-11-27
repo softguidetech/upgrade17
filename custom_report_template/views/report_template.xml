@@ -135,7 +135,7 @@
                                 <br/>
 
 
-                                <p style="font-weight: bold;">Customer Name:
+<!--                                 <p style="font-weight: bold;">Customer Name:
                                     <span t-field="o.partner_id"></span>,
                                     <span t-field="o.partner_id.street"></span>,
                                     <span t-field="o.partner_id.city"></span>,
@@ -158,7 +158,7 @@
 
                                 <p style="font-weight: bold;">Cust VatNo:
                                     <span t-field="o.partner_id.vat"></span>
-                                </p>
+                                </p> -->
 
                             </div>
                             <div class="col-4">
