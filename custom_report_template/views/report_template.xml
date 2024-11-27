@@ -154,22 +154,7 @@
                                 </strong>
                             </div>
 
-                            <div class="col-4">
-
-                                <br/>
-                                <br/>
-                                <p style="font-weight: bold;">Currency:
-                                    <span t-field="o.company_id.currency_id"></span>
-                                </p>
-
-                                <p style="font-weight: bold;">SO Date:
-                                    <span t-field="o.invoice_date"></span>
-                                </p>
-
-                                <p style="font-weight: bold;">Ref:
-                                    <span t-field="o.payment_reference"></span>
-                                </p>
-                            </div>
+                           
                         </div>
                     </div>
                 </t>
