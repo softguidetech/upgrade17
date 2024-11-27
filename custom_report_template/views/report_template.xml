@@ -167,7 +167,7 @@
                                 </p>
 
                                 <p style="font-weight: bold;">Ref:
-                                    <span t-field="o.ref"></span>
+                                    <span t-field="o.payment_reference"></span>
                                 </p>
                             </div>
                         </div>
