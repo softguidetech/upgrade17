@@ -42,17 +42,17 @@
                         <span style="font-weight: bold;">
                             <t t-esc="company.street"/>
                         </span>
-                        <br/>
                         
-                        <br/>
+                        
+                        
                         <span style="font-weight: bold;">TELEFAX:
                             <t t-esc="company.fax"/>
                         </span>
-                        <br/>
+                        
                         <span style="font-weight: bold;">P.O. BOX:
                             <t t-esc="company.zip"/>
                         </span>
-                        <br/>
+                        
                         <span style="font-weight: bold;">TRN:
                             <t t-esc="company.vat"/>
                         </span>
@@ -86,17 +86,17 @@
                         <span style="font-weight: bold;">فاكس/هاتف:
                             <t t-esc="company.phone"/>
                         </span>
-                        <br/>
+                    
                        
-                        <br/>
+                        
                         <span style="font-weight: bold;">ص.ب:
                             <t t-esc="company.zip"/>
                         </span>
-                        <br/>
+                        
                         <span style="font-weight: bold;">TRN:
                             <t t-esc="company.vat"/>
                         </span>
-                        <br/>
+                        
                         
                         <!-- <span style="font-weight: bold;">
                             <span t-field="company.state_id"/><br/>
