@@ -47,7 +47,7 @@
                             <t t-esc="company.phone"/>
                         </span>
                         <br/>
-                        <span style="font-weight: bold;">FAX:
+                        <span style="font-weight: bold;">TELEFAX:
                             <t t-esc="company.fax"/>
                         </span>
                         <br/>
