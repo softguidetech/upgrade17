@@ -39,6 +39,7 @@
                             <t t-esc="company.street"/>
                         </span>
                         <br/> -->
+                        <br></br>
                         <span style="font-weight: bold;">
                             <t t-esc="company.street"/>
                         </span>
@@ -77,7 +78,7 @@
                         <span style="font-weight: bold;">
                             <t t-esc="company.street"/>
                         </span>
-                        
+                        <br/>
                         <!-- <span style="font-weight: bold;">
                             <t t-esc="company.street2"/>
                         </span>
