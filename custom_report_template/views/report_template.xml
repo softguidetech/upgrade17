@@ -43,9 +43,7 @@
                             <t t-esc="company.street"/>
                         </span>
                         <br/>
-                        <span style="font-weight: bold;">Tel:
-                            <t t-esc="company.phone"/>
-                        </span>
+                        
                         <br/>
                         <span style="font-weight: bold;">TELEFAX:
                             <t t-esc="company.fax"/>
@@ -85,13 +83,11 @@
                         </span>
                         <br/> -->
 
-                        <span style="font-weight: bold;">هاتف:
+                        <span style="font-weight: bold;">فاكس/هاتف:
                             <t t-esc="company.phone"/>
                         </span>
                         <br/>
-                        <span style="font-weight: bold;">فاكس:
-                            <t t-esc="company.fax"/>
-                        </span>
+                       
                         <br/>
                         <span style="font-weight: bold;">ص.ب:
                             <t t-esc="company.zip"/>
