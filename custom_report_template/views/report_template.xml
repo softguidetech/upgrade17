@@ -44,7 +44,7 @@
                         </span>
                         
                         
-                        
+                        <br></br>
                         <span style="font-weight: bold;">TELEFAX:
                             <t t-esc="company.fax"/>
                         </span>
@@ -52,7 +52,7 @@
                         <span style="font-weight: bold;">P.O. BOX:
                             <t t-esc="company.zip"/>
                         </span>
-                        
+                        <br></br>
                         <span style="font-weight: bold;">TRN:
                             <t t-esc="company.vat"/>
                         </span>
@@ -86,7 +86,7 @@
                         <span style="font-weight: bold;">فاكس/هاتف:
                             <t t-esc="company.phone"/>
                         </span>
-                    
+                        <br></br>
                        
                         
                         <span style="font-weight: bold;">ص.ب:
