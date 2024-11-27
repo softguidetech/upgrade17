@@ -71,7 +71,7 @@
                         <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo" width="200px"
                              height="150px"/>
                     </div>
-                    <div class="col-4 text-right" dir="rtl">
+                    <div class="col-4 text-left" dir="rtl">
                         <span style="font-weight: bold;">
                             <t t-esc="company.name_in_report_ar"/>
                         </span>
