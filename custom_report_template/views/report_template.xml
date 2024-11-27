@@ -49,7 +49,7 @@
                         <span style="font-weight: bold;">TELEFAX:
                             <t t-esc="company.fax"/>
                         </span>
-                        
+                    </br/>
                         <span style="font-weight: bold;">P.O. BOX:
                             <t t-esc="company.zip"/>
                         </span>
