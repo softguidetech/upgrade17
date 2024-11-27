@@ -101,6 +101,7 @@
                             <t t-esc="company.vat"/>
                         </span>
                         <br/>
+                        
                         <!-- <span style="font-weight: bold;">
                             <span t-field="company.state_id"/><br/>
                             <span t-field="company.country_id"/>
@@ -120,9 +121,9 @@
                     </div>
 
                 </div>
-                <br/>
-                <br/>
-                <br/>
+               <br></br>
+                <br></br>
+                <br></br>
                 <t t-set="model" t-value="o and o._table"/>
                 <t t-if="model=='account_move'">
                     <div class="col-12">
@@ -172,9 +173,9 @@
                         </div>
                     </div>
                 </t>
-                <br/>
-                <br/>
-                <br/>
+               <br></br>
+                <br></br>
+                <br></br>
                 <t t-if="model=='sale_order'">
                     <div class="col-12">
                         <div class="row">
