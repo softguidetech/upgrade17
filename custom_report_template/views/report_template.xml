@@ -93,7 +93,7 @@
                         <span style="font-weight: bold;">ص.ب:
                             <t t-esc="company.zip"/>
                         </span>
-                        
+                    <br/>
                         <span style="font-weight: bold;">TRN:
                             <t t-esc="company.vat"/>
                         </span>
