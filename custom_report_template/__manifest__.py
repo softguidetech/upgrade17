@@ -11,7 +11,7 @@
     'data': [
         'views/res_company.xml',
         'views/address_layout.xml',
-        'views/report_template.xml',
+        # 'views/report_template.xml',
         'views/account_invoice.xml',
         
     ],
