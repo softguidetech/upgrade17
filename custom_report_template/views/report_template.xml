@@ -139,20 +139,7 @@
                              
 
                             </div>
-                            <div class="col-4">
-                                <strong>
-                                    <th t-if="o.move_type == 'out_invoice'"
-                                        style="font-weight: bold; font-size: 1.5em;">Tax Invoice:
-                                        <span t-field="o.name"></span>
-                                    </th>
-                                </strong>
-                                <strong>
-                                    <th t-if="o.move_type == 'out_refund'" style="font-weight: bold; font-size: 1.5em;">
-                                        Tax Credit Note:
-                                        <span t-field="o.name"></span>
-                                    </th>
-                                </strong>
-                            </div>
+                          
 
                            
                         </div>
