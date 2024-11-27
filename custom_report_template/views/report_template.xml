@@ -203,14 +203,14 @@
                         <div class="row">
                             <div class="col-4">
 
-<!--                                 <p style="font-weight: bold;">Customer Name:
+                                <p style="font-weight: bold;">Customer Name:
                                     <span t-field="o.partner_id"></span>,
                                     <span t-field="o.partner_id.street"></span>,
-                                    <span t-field="o.partner_id.city"></span>,
+<!--                                     <span t-field="o.partner_id.city"></span>,
                                     <span t-field="o.partner_id.state_id"></span>,
                                     <span t-field="o.partner_id.zip"></span>,
                                     <span t-field="o.partner_id.country_id"></span>
-                                    <span t-field="o.partner_id.name"></span>
+                                    <span t-field="o.partner_id.name"></span> -->
                                 </p>
 
                                 <p style="font-weight: bold;">Tell:
@@ -218,16 +218,16 @@
                                 </p>
 
                                 <p style="font-weight: bold;">Address:
-                                    <span t-field="o.partner_id.street"></span>,
+<!--                                     <span t-field="o.partner_id.street"></span>,
                                     <span t-field="o.partner_id.city"></span>,
-                                    <span t-field="o.partner_id.state_id"></span>,
+                                    <span t-field="o.partner_id.state_id"></span>, -->
                                     <span t-field="o.partner_id.country_id"></span>
                                 </p>
 
                                 <p style="font-weight: bold;">Cust VatNo:
                                     <span t-field="o.partner_id.vat"></span>,
                                 </p>
- -->
+
                             </div>
 
                         </div>
