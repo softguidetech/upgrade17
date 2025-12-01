@@ -1,0 +1,113 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Karage POS Integration</h2>
+        <h3 class="oe_slogan">Seamlessly sync orders from Karage POS to Odoo</h3>
+        <div class="alert alert-info" style="padding:16px;">
+            <strong>Beta Version:</strong> This module is currently in beta. Please report any issues to our support team.
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Key Features</h2>
+        <div class="oe_span12">
+            <ul>
+                <li><strong>REST API Webhook:</strong> Receive POS orders via secure webhook endpoints</li>
+                <li><strong>API Key Authentication:</strong> Secure integration using Odoo's built-in API key system</li>
+                <li><strong>Idempotency Support:</strong> Prevent duplicate orders with idempotency key handling</li>
+                <li><strong>Bulk Order Sync:</strong> Process multiple orders in a single request</li>
+                <li><strong>Webhook Logging:</strong> Complete audit trail of all incoming webhook requests</li>
+                <li><strong>Automatic POS Session Management:</strong> Creates and manages POS sessions for external orders</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">How It Works</h2>
+        <div class="oe_span12">
+            <h4>1. Configure API Authentication</h4>
+            <p>Create an API key in Odoo (User Preferences > Account Security > New API Key) and configure it in your Karage POS system.</p>
+
+            <h4>2. Send Orders via Webhook</h4>
+            <p>Your Karage POS system sends completed orders to the webhook endpoint:</p>
+            <pre style="background:#f5f5f5; padding:10px; border-radius:4px;">
+POST /api/v1/webhook/pos-order
+X-API-KEY: your_api_key_here
+Content-Type: application/json</pre>
+
+            <h4>3. Automatic Order Processing</h4>
+            <p>Orders are automatically validated, created in Odoo POS, and confirmed with proper payment and inventory handling.</p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">API Endpoints</h2>
+        <div class="oe_span12">
+            <table class="table table-bordered" style="background:#fff;">
+                <thead>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/api/v1/webhook/pos-order</code></td>
+                        <td>POST</td>
+                        <td>Create a single POS order</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/v1/webhook/pos-order/bulk</code></td>
+                        <td>POST</td>
+                        <td>Create multiple POS orders in batch</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Configuration Options</h2>
+        <div class="oe_span12">
+            <p>Access configuration via <strong>Settings > Point of Sale > Karage POS</strong>:</p>
+            <ul>
+                <li><strong>Processing Timeout:</strong> Maximum time for request processing before retry is allowed</li>
+                <li><strong>Record Retention:</strong> Days to keep webhook logs before cleanup</li>
+                <li><strong>Bulk Sync Max Orders:</strong> Maximum orders per bulk request</li>
+                <li><strong>Valid Order Statuses:</strong> Order status codes to accept from external system</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Requirements</h2>
+        <div class="oe_span12">
+            <ul>
+                <li>Odoo 18.0</li>
+                <li>Point of Sale module installed and configured</li>
+                <li>At least one POS configuration with payment methods</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Support</h2>
+        <div class="oe_span12 text-center">
+            <p>For support and inquiries, please contact us at:</p>
+            <p><a href="mailto:support@karage.co">support@karage.co</a></p>
+            <p><a href="https://karage.co">https://karage.co</a></p>
+        </div>
+    </div>
+</section>

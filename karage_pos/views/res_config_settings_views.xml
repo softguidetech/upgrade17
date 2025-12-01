@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.karage.pos</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Karage POS" name="karage_pos">
+                    <block title="API Authentication" name="karage_pos_api_info">
+                        <div class="alert alert-info">
+                            <h4>Webhook API Authentication</h4>
+                            <p>The webhook endpoint requires authentication using Odoo's built-in API key system.</p>
+
+                            <h5 class="mt-3">How to Create an API Key:</h5>
+                            <ol>
+                                <li><strong>Navigate:</strong> Click your User Icon (top right) → Preferences</li>
+                                <li><strong>Account Security:</strong> Go to the "Account Security" tab</li>
+                                <li><strong>Create Key:</strong> Click "New API Key" button</li>
+                                <li><strong>Name the Key:</strong> Enter a clear description (e.g., "Karage POS Webhook Integration")
+                                    <br/><small class="text-warning">⚠️ This description is the only way to identify the key later!</small>
+                                </li>
+                                <li><strong>Set Duration:</strong> Choose key validity:
+                                    <ul>
+                                        <li>Temporary: 1 Day, 1 Week, 1 Month, 3 Months, 6 Months, 1 Year</li>
+                                        <li><strong>Persistent Key</strong> (recommended for production - never expires)</li>
+                                        <li>Custom Date</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Copy the Key:</strong> After creation, copy and securely store the API key
+                                    <br/><small class="text-danger">⚠️ You won't be able to see it again!</small>
+                                </li>
+                                <li><strong>Configure:</strong> Add the API key to your external Karage POS system</li>
+                            </ol>
+
+                            <h5 class="mt-3">Using the API Key:</h5>
+                            <p>Include the key in webhook requests using the <code>X-API-KEY</code> header:</p>
+                            <pre class="bg-light p-2 border">POST /api/v1/webhook/pos-order
+X-API-KEY: your_api_key_here
+Content-Type: application/json</pre>
+                        </div>
+                    </block>
+                    <block title="Idempotency Configuration" name="karage_pos_idempotency_config">
+                        <setting string="Processing Timeout" name="idempotency_timeout_setting">
+                            <field name="idempotency_processing_timeout"/>
+                            <div class="text-muted">
+                                Maximum time (in minutes) a request can stay in "processing" status before being considered stuck.
+                            </div>
+                        </setting>
+                        <setting string="Record Retention" name="idempotency_retention_setting">
+                            <field name="idempotency_retention_days"/>
+                            <div class="text-muted">
+                                Number of days to keep old idempotency records. Set to 0 to disable automatic cleanup.
+                            </div>
+                        </setting>
+                    </block>
+                    <block title="Bulk Sync Configuration" name="karage_pos_bulk_sync_config">
+                        <setting string="Maximum Orders per Bulk Request" name="bulk_sync_max_orders_setting">
+                            <field name="bulk_sync_max_orders"/>
+                            <div class="text-muted">
+                                Maximum number of orders allowed in a single bulk sync request. Default: 1000 orders.
+                            </div>
+                        </setting>
+                    </block>
+                    <block title="Order Validation" name="karage_pos_order_validation">
+                        <setting string="Valid Order Statuses" name="valid_order_statuses_setting">
+                            <field name="valid_order_statuses"/>
+                            <div class="text-muted">
+                                Comma-separated list of valid OrderStatus values (e.g., "103,104"). Only orders with these status codes will be accepted.
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
